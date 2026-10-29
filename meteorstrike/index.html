@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteor Strike • 1979 Vector Space Combat Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☄️</text></svg>">
+</head>
+<body>
+
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Arcade Cabinet Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="../index.html" class="brand-back" id="btn-back-hub" title="Return to Games Dashboard">◀ DASHBOARD</a>
+      <h1 class="brand-title">☄️ METEOR STRIKE</h1>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn active" title="Toggle Sound (M)">
+        <span id="sound-icon">🔊</span> SOUND
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Filter">
+        CRT: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">VECTOR SPACE COMBAT • 1979 ATARI TRIBUTE</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- Scoreboard HUD -->
+    <div class="scoreboard">
+      <div class="hud-group">
+        <span class="hud-label">1UP SCORE</span>
+        <span id="hud-score" class="hud-val score">000000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">HIGH SCORE</span>
+        <span id="hud-high-score" class="hud-val">000000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">WAVE</span>
+        <span id="hud-wave" class="hud-val">1</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">SHIPS</span>
+        <span id="hud-lives" class="hud-val lives">▲ ▲ ▲</span>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <canvas id="meteor-canvas" width="800" height="600"></canvas>
+        <div id="floating-banner" class="floating-banner">★ WAVE 1 CLEARED! ★</div>
+        
+        <!-- Ready Overlay Hint -->
+        <div id="ready-hint" class="ready-hint">
+          <h3>SECTOR ARMED</h3>
+          <p>PRESS UP TO THRUST, SPACE TO FIRE</p>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-overlay" class="game-overlay">
+          <h2 id="overlay-title" class="overlay-title">GAME OVER</h2>
+          <div class="overlay-stats">
+            <div class="overlay-stat-item">
+              <span>FINAL SCORE</span>
+              <span id="overlay-final-score">000000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>BEST SCORE</span>
+              <span id="overlay-best-score">000000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>WAVE REACHED</span>
+              <span id="overlay-final-wave">WAVE 1</span>
+            </div>
+          </div>
+          <button id="overlay-restart-btn" class="overlay-restart-btn">PLAY AGAIN ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Controls Deck for Touch / Mobile Handheld -->
+    <div class="controls-deck">
+      <button id="btn-rot-left" class="btn-ctrl" aria-label="Rotate Left">◀ ROT</button>
+      <button id="btn-rot-right" class="btn-ctrl" aria-label="Rotate Right">ROT ▶</button>
+      <button id="btn-thrust" class="btn-ctrl thrust" aria-label="Engage Thrusters">THRUST ▲</button>
+      <button id="btn-fire" class="btn-ctrl fire" aria-label="Fire Vector Cannons">FIRE [SPACE]</button>
+      <button id="btn-hyper" class="btn-ctrl hyper" aria-label="Emergency Hyperspace Jump">HYPER 🌀</button>
+    </div>
+
+    <!-- Gameplay Guide Card -->
+    <div class="instructions-card">
+      <h4>PILOT FLIGHT MANUAL:</h4>
+      <ul>
+        <li>• <strong>A / D or LEFT / RIGHT:</strong> Rotate ship vector orientation</li>
+        <li>• <strong>W or UP ARROW:</strong> Engage main ion thruster (watch inertial momentum!)</li>
+        <li>• <strong>SPACEBAR:</strong> Fire rapid pulse lasers (max 4 active shots)</li>
+        <li>• <strong>S or DOWN ARROW:</strong> Emergency Hyperspace jump (beware re-entry hazard)</li>
+        <li>• <strong>TARGET PRIORITY:</strong> Large (20) → Medium (50) → Small (100) → Saucer (200 / 1000)</li>
+      </ul>
+    </div>
+  </main>
+
+  <script type="module" src="./js/bundle.js"></script>
+</body>
+</html>

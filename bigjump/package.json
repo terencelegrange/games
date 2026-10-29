@@ -1,0 +1,11 @@
+{
+  "name": "bigjump",
+  "version": "1.0.0",
+  "description": "Big Jump • 1983 Konami Track & Field Long Jump Arcade Tribute",
+  "main": "js/bundle.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx esbuild js/main.js --bundle --outfile=js/bundle.js"
+  },
+  "license": "MIT"
+}

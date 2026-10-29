@@ -1,0 +1,12 @@
+{
+  "name": "sharpshooter",
+  "version": "1.0.0",
+  "description": "Sharpshooter - Classic 80s/90s Arcade Shooting Gallery",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["shooting", "gallery", "duckhunt", "pointblank", "arcade", "canvas", "html5", "retro"],
+  "author": "",
+  "license": "MIT"
+}

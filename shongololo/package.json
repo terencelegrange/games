@@ -1,0 +1,20 @@
+{
+  "name": "shongololo",
+  "version": "1.0.0",
+  "description": "Shongololo - 1998 Nokia Snake Arcade Classic",
+  "main": "js/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild js/main.js --bundle --outfile=js/bundle.js"
+  },
+  "keywords": [
+    "snake",
+    "nokia",
+    "millipede",
+    "shongololo",
+    "retro",
+    "1998"
+  ],
+  "author": "",
+  "license": "MIT"
+}

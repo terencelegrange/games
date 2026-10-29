@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gorillas • QBasic 1991 Artillery Classic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦍</text></svg>">
+</head>
+<body>
+
+  <!-- Rotate Device Prompt Overlay for Mobile Portrait -->
+  <div id="rotate-device-overlay" class="rotate-device-overlay">
+    <div class="rotate-phone-anim">📱</div>
+    <div class="rotate-title">ROTATE DEVICE</div>
+    <div class="rotate-desc">Rotate to landscape for skyline artillery trajectories!</div>
+    <button id="btn-bypass-rotate" class="bypass-rotate-btn">PLAY IN PORTRAIT ANYWAY ✕</button>
+  </div>
+
+  <!-- Arcade Cabinet Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="../index.html" class="brand-back">◀ GAMES HUB</a>
+      <h1 class="brand-title">🦍 GORILLAS</h1>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn" title="Toggle Sound (M)">
+        <span id="sound-icon">🔊</span> SOUND
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Filter">
+        CRT: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">QBASIC 1991 • DESTRUCTIBLE SKYLINE ARTILLERY</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART MATCH</button>
+      </div>
+    </div>
+
+    <!-- Scoreboard HUD -->
+    <div class="scoreboard">
+      <div class="hud-group">
+        <span class="hud-label">PLAYER</span>
+        <span id="hud-player-score" class="hud-val player-score">0</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">ROUND</span>
+        <span id="hud-round" class="hud-val round-val">1</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">COMPUTER</span>
+        <span id="hud-ai-score" class="hud-val ai-score">0</span>
+      </div>
+      <div class="hud-group wind-hud">
+        <span class="hud-label">ATMOSPHERIC WIND</span>
+        <div class="wind-info">
+          <span id="hud-wind-dir" class="hud-val wind-dir">CALM ◆</span>
+          <span id="hud-wind-val" class="hud-val wind-speed">0.0 MPH</span>
+        </div>
+        <div class="wind-meter-container">
+          <div id="wind-meter-fill" class="wind-meter-fill"></div>
+        </div>
+      </div>
+      <div class="hud-group status-hud">
+        <span class="hud-label">STATUS</span>
+        <span id="hud-turn-status" class="hud-val turn-status">★ YOUR TURN - ENTER ANGLE & POWER</span>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Game Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <canvas id="gorillas-canvas" width="800" height="550"></canvas>
+        <div id="crt-overlay" class="crt-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Controls Dock -->
+    <div class="controls-deck">
+      <div class="control-box">
+        <div class="control-label-row">
+          <label for="input-angle">ANGLE (0° - 90°)</label>
+          <input type="number" id="input-angle" min="0" max="90" value="60">
+        </div>
+        <input type="range" id="slider-angle" min="0" max="90" value="60" class="arcade-slider">
+      </div>
+
+      <div class="control-box">
+        <div class="control-label-row">
+          <label for="input-velocity">VELOCITY (1 - 100)</label>
+          <input type="number" id="input-velocity" min="1" max="100" value="55">
+        </div>
+        <input type="range" id="slider-velocity" min="1" max="100" value="55" class="arcade-slider">
+      </div>
+
+      <div class="control-box throw-box">
+        <button id="btn-throw" class="btn-throw">
+          <span>🍌 THROW!</span>
+          <span class="btn-sub">[ENTER]</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      ENTER / BUTTON = THROW • DRAG GORILLA ON SCREEN = SLINGSHOT AIM • P = PAUSE • M = SOUND • ESC = DASHBOARD
+    </div>
+  </main>
+
+  <script src="./js/bundle.js" type="module"></script>
+</body>
+</html>

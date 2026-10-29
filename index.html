@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAMES HUB | Tactical & Retro Arcade Collection</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CRT Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Header -->
+  <header class="hub-header">
+    <div class="brand-wrapper">
+      <span class="brand-icon">🕹️</span>
+      <div class="brand-text">
+        <span class="brand-title">GAMES VAULT</span>
+        <span class="brand-sub">TACTICAL & RETRO COLLECTION</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="badge-count" id="games-count">20 GAMES READY</span>
+      
+      
+      <button id="btn-toggle-crt" class="control-btn active" title="Toggle CRT Scanlines">
+        <span>📺</span> CRT
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="hub-main">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-tag">★ SELECT A GAME & PLAY ★</div>
+      <h1 class="hero-heading">ARCADE & STRATEGY HUB</h1>
+      <p class="hero-desc">
+        Explore standalone tactical conquest and retro arcade masterpieces. Each game runs independently with authentic graphics, sound synthesis, and high score tracking.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs" role="tablist">
+        <button class="tab-btn active" data-filter="all" role="tab">ALL (20)</button>
+        <button class="tab-btn" data-filter="strategy" role="tab">STRATEGY (2)</button>
+        <button class="tab-btn" data-filter="arcade" role="tab">ARCADE (17)</button>
+        <button class="tab-btn" data-filter="puzzle" role="tab">PUZZLE (1)</button>
+      </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="games-grid" id="games-grid">
+      <!-- TILE 20: METEOR STRIKE -->
+      <a href="./meteorstrike/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #22c55e; --tile-glow: rgba(34, 197, 94, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">VECTOR COMBAT</span>
+          </div>
+          <span class="tile-year">1979</span>
+          <div class="preview-meteorstrike-scene">
+            <div class="meteor-rock rock-1">🪨</div>
+            <div class="meteor-rock rock-2">🪨</div>
+            <div class="meteor-rock rock-3">🪨</div>
+            <div class="meteor-ship">▲</div>
+            <div class="meteor-bullet"></div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">1979 VECTOR COMBAT</span>
+            <h2 class="tile-title">METEOR STRIKE</h2>
+          </div>
+          <p class="tile-desc">
+            Atari Asteroids vector space combat tribute! Rotate 360°, engage inertia thrusters, blast fracturing space rocks, and duel aggressive alien saucers.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-meteorstrike">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 19: ARKANOID -->
+      <a href="./arkanoid/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #3b82f6; --tile-glow: rgba(59, 130, 246, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">BLOCK BREAKER</span>
+          </div>
+          <span class="tile-year">1986</span>
+          <div class="preview-arkanoid-scene">
+            <div class="arkanoid-bricks">
+              <div class="arkanoid-brick c-silver"></div>
+              <div class="arkanoid-brick c-red"></div>
+              <div class="arkanoid-brick c-yellow"></div>
+              <div class="arkanoid-brick c-blue"></div>
+              <div class="arkanoid-brick c-pink"></div>
+              <div class="arkanoid-brick c-green"></div>
+            </div>
+            <div class="arkanoid-paddle"></div>
+            <div class="arkanoid-ball"></div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">1986 BLOCK BREAKER</span>
+            <h2 class="tile-title">ARKANOID</h2>
+          </div>
+          <p class="tile-desc">
+            Taito block breaker tribute! Pilot the Vaus space paddle, deflect energy balls, smash colorful brick formations, and snatch falling capsule power-ups.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-arkanoid">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 18: BIN CHICKEN -->
+      <a href="./binchicken/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #10b981; --tile-glow: rgba(16, 185, 129, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">FLAPPY ARCADE</span>
+          </div>
+          <span class="tile-year">2014</span>
+          <div class="preview-binchicken-scene">
+            <div class="binchicken-sun">☀️</div>
+            <div class="binchicken-bin">🗑️</div>
+            <div class="binchicken-avatar">🪶</div>
+            <div class="binchicken-chip">🍟</div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">2014 FLAPPY ARCADE</span>
+            <h2 class="tile-title">BIN CHICKEN</h2>
+          </div>
+          <p class="tile-desc">
+            Guide Australia's iconic Sacred Ibis (the beloved Bin Chicken) through treacherous council wheelie bins! Flap your scruffy wings, snatch hot chips, and rule the curbside.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-binchicken">0000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 17: BOTTOMER -->
+      <a href="./bottomer/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #f59e0b; --tile-glow: rgba(245, 158, 11, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">SALOON CLASSIC</span>
+          </div>
+          <span class="tile-year">1983</span>
+          <div class="preview-bottomer-scene">
+            <div class="bottomer-saloon-bg"></div>
+            <div class="bottomer-bar-line"></div>
+            <div class="bottomer-tap">🚰</div>
+            <div class="bottomer-stein">🍺</div>
+            <div class="bottomer-patron">🤠</div>
+            <div class="bottomer-tip">💰</div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">1983 TAPPER SALOON</span>
+            <h2 class="tile-title">BOTTOMER</h2>
+          </div>
+          <p class="tile-desc">
+            Bally Midway Tapper tribute! Pour cold steins down 4 busy bar counters to thirsty cowboys, miners, and ladies. Catch returning empty mugs before they shatter!
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-bottomer">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 16: BIG JUMP -->
+      <a href="./bigjump/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #00f0ff; --tile-glow: rgba(0, 240, 255, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">ATHLETICS ARCADE</span>
+          </div>
+          <span class="tile-year">1983</span>
+          <div class="preview-bigjump-scene">
+            <div class="bigjump-stadium-wall"></div>
+            <div class="bigjump-crowd-row">👥👥👥👥</div>
+            <div class="bigjump-runner">🏃</div>
+            <div class="bigjump-angle-pill">45°</div>
+            <div class="bigjump-foul-board"></div>
+            <div class="bigjump-sand-pit"></div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">1983 TRACK & FIELD</span>
+            <h2 class="tile-title">BIG JUMP</h2>
+          </div>
+          <p class="tile-desc">
+            Konami Track & Field Long Jump tribute! Mash alternating keys to accelerate to 1250 cm/s, time your takeoff at the foul line, and nail the 45° launch angle.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-bigjump">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 15: BIPLANE FLYER -->
+      <a href="./biplaneflyer/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #38bdf8; --tile-glow: rgba(56, 189, 248, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">FLIGHT SIMULATOR</span>
+          </div>
+          <span class="tile-year">1984</span>
+          <div class="preview-biplane-scene">
+            <div class="biplane-sky-backdrop"></div>
+            <div class="biplane-cloud cloud-1">☁️</div>
+            <div class="biplane-cloud cloud-2">☁️</div>
+            <div class="biplane-avatar">✈️</div>
+            <div class="biplane-smoke"></div>
+            <div class="biplane-target">🏭</div>
+            <div class="biplane-runway-line"></div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">1984 FLIGHT SIMULATOR</span>
+            <h2 class="tile-title">BIPLANE FLYER</h2>
+          </div>
+          <p class="tile-desc">
+            Sopwith Camel flight simulator! Scramble from the runway, drop gravity-arc bombs onto enemy hangars, dogfight Red Baron aces, and execute a gentle landing.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-biplaneflyer">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 14: SHONGOLOLO -->
+      <a href="./shongololo/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #84cc16; --tile-glow: rgba(132, 204, 22, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">NOKIA MONOCHROME</span>
+          </div>
+          <span class="tile-year">1998</span>
+          <div class="preview-shongololo-scene">
+            <div class="shongo-lcd-matrix"></div>
+            <div class="shongo-body">
+              <div class="shongo-seg"></div>
+              <div class="shongo-seg"></div>
+              <div class="shongo-seg"></div>
+              <div class="shongo-head"></div>
+            </div>
+            <span class="shongo-fruit">🍎</span>
+            <span class="shongo-beetle">🪲</span>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">RETRO 1998 SNAKE</span>
+            <h2 class="tile-title">SHONGOLOLO</h2>
+          </div>
+          <p class="tile-desc">
+            Authentic 1998 Nokia monochrome LCD snake! Guide the crawling African millipede through Classic, Wrap, and Acacia mazes, devouring Marula fruit and golden sun beetles.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-shongololo">0000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 13: MONKEY JUMP -->
+      <a href="./monkeyjump/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #ef4444; --tile-glow: rgba(239, 68, 68, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">ARCADE 1981</span>
+          </div>
+          <span class="tile-year">1981</span>
+          <div class="preview-monkeyjump-scene">
+            <div class="mj-girder top"></div>
+            <div class="mj-ladder"></div>
+            <div class="mj-girder mid"></div>
+            <div class="mj-girder bot"></div>
+            <div class="mj-kong">🦍</div>
+            <div class="mj-penny">👱‍♀️</div>
+            <div class="mj-barrel">🛢️</div>
+            <div class="mj-jumpman">🏃</div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">ACTION / PLATFORMER</span>
+            <h2 class="tile-title">MONKEY JUMP</h2>
+          </div>
+          <p class="tile-desc">
+            1981 arcade platforming legend! Scale sloped steel girders, climb ladders, leap rolling barrels for +100 bonus, smash hazards with hammers, and rescue Penny.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-monkeyjump">00000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 12: GALACTIC SHOOTER -->
+      <a href="./galacticshooter/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #38bdf8; --tile-glow: rgba(56, 189, 248, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">GALAGA CLASSIC</span>
+          </div>
+          <span class="tile-year">1981</span>
+          <div class="preview-space2-scene">
+            <div class="space2-starfield"></div>
+            <div class="space2-ufo" style="color: #22c55e;">👾</div>
+            <div class="space2-cannon" style="color: #38bdf8;">🚀🚀</div>
+            <div class="space2-lasers">
+              <span class="laser-beam l1" style="background:#4ade80;"></span>
+              <span class="laser-beam l2" style="background:#4ade80;"></span>
+            </div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">RETRO SPACE ARCADE</span>
+            <h2 class="tile-title">GALACTIC SHOOTER</h2>
+          </div>
+          <p class="tile-desc">
+            Galaga arcade tribute! Dodge swarming alien formations, evade tractor beam captures, and rescue captured fighters to unleash devastating Dual Fighter firepower.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-galacticshooter">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 11: SPACE DESTROYER II -->
+      <a href="./spacedestroyer2/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #06b6d4; --tile-glow: rgba(6, 182, 212, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">UPGRADED ARSENAL</span>
+          </div>
+          <span class="tile-year">2026</span>
+          <div class="preview-space2-scene">
+            <div class="space2-starfield"></div>
+            <div class="space2-ufo">🛸</div>
+            <div class="space2-powerup">⬡ P</div>
+            <div class="space2-cannon">▲</div>
+            <div class="space2-lasers">
+              <span class="laser-beam l1"></span>
+              <span class="laser-beam l2"></span>
+              <span class="laser-beam l3"></span>
+            </div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">SPACE SHOOTER V2</span>
+            <h2 class="tile-title">SPACE DESTROYER II</h2>
+          </div>
+          <p class="tile-desc">
+            The next-generation cosmic defense! Shoot down frequent mystery motherships to catch falling upgrade pods, unleashing Dual Parallel, V-Spread, and Triple laser firepower.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-spacedestroyer2">00000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 10: GOODIES AND BADDIES -->
+      <a href="./goodiesandbaddies/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #ef4444; --tile-glow: rgba(239, 68, 68, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">GOTHIC ARCADE</span>
+          </div>
+          <span class="tile-year">1985</span>
+          <div class="preview-goodies-scene">
+            <span class="goodies-item" style="filter: drop-shadow(0 0 10px #ef4444);">⚔️</span>
+            <span class="goodies-item" style="filter: drop-shadow(0 0 10px #38bdf8);">🛡️</span>
+            <span class="goodies-item" style="filter: drop-shadow(0 0 10px #65a30d);">🧟</span>
+            <span class="goodies-item" style="filter: drop-shadow(0 0 10px #f59e0b);">🔥</span>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">ACTION / PLATFORMER</span>
+            <h2 class="tile-title">GOODIES AND BADDIES</h2>
+          </div>
+          <p class="tile-desc">
+            Dark fantasy arcade classic! Guide Knight Arthur through the Haunted Graveyard with committed jump kinematics, 2-stage armor degradation, and weapon arsenal.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-goodiesandbaddies">05000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 9: GORILLAS -->
+      <a href="./gorillas/index.html" class="game-tile" data-category="strategy" style="--tile-accent: #eab308; --tile-glow: rgba(234, 179, 8, 0.4);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">ARTILLERY STRATEGY</span>
+          </div>
+          <span class="tile-year">1991</span>
+          <div class="preview-gorillas-scene">
+            <div class="gorilla-sun"></div>
+            <div class="gorilla-skyline-silhouette">
+              <div class="bld bld-1"></div>
+              <div class="bld bld-2"><div class="mini-gorilla g-left">🦍</div></div>
+              <div class="bld bld-3"></div>
+              <div class="bld bld-4"></div>
+              <div class="bld bld-5"><div class="mini-gorilla g-right">🦍</div></div>
+              <div class="bld bld-6"></div>
+            </div>
+            <div class="flying-banana-dot">🍌</div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">ARTILLERY / STRATEGY</span>
+            <h2 class="tile-title">GORILLAS</h2>
+          </div>
+          <p class="tile-desc">
+            QBasic artillery classic! Lob explosive bananas across destructible city skyscrapers with ballistic angles, throw power, and atmospheric wind.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-gorillas">00</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 8: SPACE DESTROYER -->
+      <a href="./spacedestroyer/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #22c55e; --tile-glow: rgba(34, 197, 94, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">SPACE SHOOTER</span>
+          </div>
+          <span class="tile-year">1978</span>
+          <div class="preview-space-scene">
+            <div class="space-starfield"></div>
+            <div class="space-invader squid">👾</div>
+            <div class="space-invader crab">👾</div>
+            <div class="space-cannon">▲</div>
+            <div class="space-laser"></div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">RETRO SPACE INVADERS</span>
+            <h2 class="tile-title">SPACE DESTROYER</h2>
+          </div>
+          <p class="tile-desc">
+            The definitive 80s arcade space shooter. Defend Earth against descending waves of marching alien invaders, take cover behind destructible bunkers, and blast mystery UFO motherships.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-spacedestroyer">00000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 7: SHARPSHOOTER -->
+      <a href="./sharpshooter/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #f43f5e; --tile-glow: rgba(244, 63, 94, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">SHOOTING GALLERY</span>
+          </div>
+          <span class="tile-year">1984</span>
+          <div class="preview-sharpshooter-scene">
+            <span class="sharpshooter-crosshair"></span>
+            <span class="sharpshooter-target duck">🦆</span>
+            <span class="sharpshooter-target circle">🎯</span>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">80S ARCADE GALLERY</span>
+            <h2 class="tile-title">SHARPSHOOTER</h2>
+          </div>
+          <p class="tile-desc">
+            The authentic 80s arcade shooting gallery. Aim down the central crosshair and hit spacebar to blast flying ducks, moving bullseyes, tin cans, and retro UFOs across accelerating stages.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-sharpshooter">0000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 6: FAST CAR -->
+      <a href="./fastcar/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #ef4444; --tile-glow: rgba(239, 68, 68, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">OUTRUN RACER</span>
+          </div>
+          <span class="tile-year">1986</span>
+          <div class="preview-fastcar-scene">
+            <span class="fastcar-sky"></span>
+            <span class="fastcar-palm left">🌴</span>
+            <span class="fastcar-road">
+              <span class="fastcar-stripe"></span>
+              <span class="fastcar-stripe"></span>
+              <span class="fastcar-stripe"></span>
+            </span>
+            <span class="fastcar-palm right">🌴</span>
+            <span class="fastcar-player">🏎️</span>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">3-LANE RETRO RACER</span>
+            <h2 class="tile-title">FAST CAR</h2>
+          </div>
+          <p class="tile-desc">
+            The classic 3-lane retro highway racer. Dodge hazardous oil slicks and metal barrels, collect spinning golden coins, and experience high-speed coastal OutRun driving.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-fastcar">000000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 5: SAFARI RUN -->
+      <a href="./safarirun/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #f59e0b; --tile-glow: rgba(245, 158, 11, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">ENDLESS RUNNER</span>
+          </div>
+          <span class="tile-year">2026</span>
+          <div class="preview-safari-scene">
+            <span class="safari-sun"></span>
+            <span class="safari-tree">🌳</span>
+            <span class="safari-rock">🪨</span>
+            <span class="safari-cheetah">🐆</span>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">CHROME RUNNER / SAVANNA</span>
+            <h2 class="tile-title">SAFARI RUN</h2>
+          </div>
+          <p class="tile-desc">
+            The African cheetah endless runner. Gallop across the Serengeti savanna, leap over majestic baobab trees and granite boulders, and duck under swooping vultures.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-safarirun">00000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 4: BLOCKZ -->
+      <a href="./blockz/index.html" class="game-tile" data-category="puzzle" style="--tile-accent: #00f0ff; --tile-glow: rgba(0, 240, 255, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">PUZZLE</span>
+          </div>
+          <span class="tile-year">1984</span>
+          <div class="preview-tetris-scene">
+            <div class="tetro-grid tetro-o">
+              <div class="tetro-cell" style="background: #ffff00;"></div>
+              <div class="tetro-cell" style="background: #ffff00;"></div>
+              <div class="tetro-cell" style="background: #ffff00;"></div>
+              <div class="tetro-cell" style="background: #ffff00;"></div>
+            </div>
+            <div class="tetro-grid tetro-t">
+              <div class="tetro-cell"></div>
+              <div class="tetro-cell" style="background: #b026ff;"></div>
+              <div class="tetro-cell"></div>
+              <div class="tetro-cell" style="background: #b026ff;"></div>
+              <div class="tetro-cell" style="background: #b026ff;"></div>
+              <div class="tetro-cell" style="background: #b026ff;"></div>
+            </div>
+            <div class="tetro-grid tetro-i">
+              <div class="tetro-cell" style="background: #00f0ff;"></div>
+              <div class="tetro-cell" style="background: #00f0ff;"></div>
+              <div class="tetro-cell" style="background: #00f0ff;"></div>
+              <div class="tetro-cell" style="background: #00f0ff;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">TILE-MATCHING PUZZLE</span>
+            <h2 class="tile-title">BLOCKZ</h2>
+          </div>
+          <p class="tile-desc">
+            The definitive block puzzle. Features 7-bag random generation, SRS wall kicks, ghost projection, hold piece queue, and hard drops.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-blockz">0000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 3: DIGGING -->
+      <a href="./digging/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #ffff55; --tile-glow: rgba(255, 255, 85, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">CGA CLASSIC</span>
+          </div>
+          <span class="tile-year">1983</span>
+          <div class="preview-digger-scene">
+            <span class="digger-item" style="filter: drop-shadow(0 0 10px #ffff55);">🚜</span>
+            <span class="digger-item" style="filter: drop-shadow(0 0 10px #55ff55);">💎</span>
+            <span class="digger-item" style="filter: drop-shadow(0 0 10px #ffff55);">💰</span>
+            <span class="digger-item" style="filter: drop-shadow(0 0 10px #ff5555);">👾</span>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">ACTION / CGA</span>
+            <h2 class="tile-title">DIGGING</h2>
+          </div>
+          <p class="tile-desc">
+            Excavate subterranean tunnels, collect emerald bonuses, crush pursuing monsters with heavy gold bags, and fire recharging lasers.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-digging">0000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 2: MAZE ARCADE -->
+      <a href="./mazearcade/index.html" class="game-tile" data-category="arcade" style="--tile-accent: #ffff00; --tile-glow: rgba(255, 255, 0, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">MAZE ARCADE</span>
+          </div>
+          <span class="tile-year">1980</span>
+          <div class="preview-pacman-scene">
+            <div class="chomper"></div>
+            <div style="display: flex; gap: 6px;">
+              <span style="font-size: 1.2rem; color: #ffb8ae;">•</span>
+              <span style="font-size: 1.2rem; color: #ffb8ae;">•</span>
+              <span style="font-size: 1.2rem; color: #ffb8ae;">•</span>
+            </div>
+            <div class="ghost-avatar">👻</div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">CLASSIC ARCADE</span>
+            <h2 class="tile-title">MAZE ARCADE</h2>
+          </div>
+          <p class="tile-desc">
+            The legendary retro maze runner. Outmaneuver 4 ghost AIs with authentic chase routines, power energizers, and Web Audio chiptunes.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score">HI-SCORE: <span id="hi-mazearcade">0000</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- TILE 1: TANK WARS -->
+      <a href="./tankwars/index.html" class="game-tile" data-category="strategy" style="--tile-accent: #2196f3; --tile-glow: rgba(33, 150, 243, 0.35);">
+        <div class="tile-preview">
+          <div class="tile-badge-wrapper">
+            <span class="tile-badge">RTS CONQUEST</span>
+          </div>
+          <span class="tile-year">2026</span>
+          <div class="preview-art-modern">
+            <div class="rts-node rts-player">12</div>
+            <div class="rts-link"><span class="rts-unit">🛡️</span></div>
+            <div class="rts-node rts-enemy">08</div>
+          </div>
+        </div>
+        <div class="tile-content">
+          <div class="tile-header">
+            <span class="tile-category">REAL-TIME STRATEGY</span>
+            <h2 class="tile-title">TANK WARS</h2>
+          </div>
+          <p class="tile-desc">
+            Tactical base conquest game. Deploy armored tanks and combat helicopters across connected supply lines to dominate enemy territory.
+          </p>
+          <div class="tile-meta-row">
+            <div class="tile-score" id="tankwars-tile-score">STATUS: <span>ACTIVE</span></div>
+            <button class="tile-play-btn" tabindex="-1">Play</button>
+          </div>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer class="hub-footer">
+    <div>🕹️ Modular Games Dashboard • Independent Game Architectures</div>
+    <div style="font-size: 0.75rem; color: #475569;">Quick Hotkeys: Press 1 for Tank Wars, 2 for Maze Arcade, 3 for Digging, 4 for Blockz, 5 for Safari Run, 6 for Fast Car, 7 for Sharpshooter, 8 for Space Destroyer, 9 for Gorillas, 0 for Goodies and Baddies, V for Space Destroyer II, M for Monkey Jump, S for Shongololo, F for Biplane Flyer, J for Big Jump, B for Bottomer</div>
+  </footer>
+
+  <dialog id="account-dialog" class="account-dialog">
+    <div class="account-head"><div><span class="account-kicker">GAMES VAULT</span><h2 id="account-title">PLAYER ACCESS</h2></div><button id="account-close" aria-label="Close">×</button></div>
+    <div id="account-error" class="account-error" role="alert"></div>
+    <div id="signed-out-panel">
+      <div class="account-tabs"><button class="account-tab active" data-auth-mode="login">SIGN IN</button><button class="account-tab" data-auth-mode="register">CREATE ACCOUNT</button></div>
+      <form id="account-form"><label>Username<input id="account-username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_-]+" autocomplete="username" required></label><label>Password<input id="account-password" type="password" minlength="1" maxlength="128" autocomplete="current-password" required></label><button class="account-submit" type="submit">ENTER VAULT</button></form>
+    </div>
+    <div id="signed-in-panel" hidden>
+      <div class="player-card"><span class="player-avatar">◉</span><div><small>COMMANDER</small><strong id="account-name">PLAYER</strong></div></div>
+      <div class="vault-stats-bar">
+        <div class="vault-stat-box">
+          <div class="vault-stat-label">WINS</div>
+          <div class="vault-stat-value wins" id="stat-wins">0</div>
+        </div>
+        <div class="vault-stat-box">
+          <div class="vault-stat-label">LOSSES</div>
+          <div class="vault-stat-value losses" id="stat-losses">0</div>
+        </div>
+        <div class="vault-stat-box">
+          <div class="vault-stat-label">WIN RATE</div>
+          <div class="vault-stat-value" id="stat-winrate">0%</div>
+        </div>
+        <div class="vault-stat-box">
+          <div class="vault-stat-label">TOTAL MATCHES</div>
+          <div class="vault-stat-value" id="stat-total">0</div>
+        </div>
+      </div>
+      <h3>RECENT GAME ACTIVITY</h3><div id="match-history" class="match-history"><p>No game activity yet.</p></div>
+      <button id="logout-btn" class="account-submit secondary">SIGN OUT</button>
+    </div>
+  </dialog>
+
+  <script src="dashboard.js" defer></script>
+</body>
+</html>

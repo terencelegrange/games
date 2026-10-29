@@ -1,0 +1,12 @@
+{
+  "name": "spacedestroyer2",
+  "version": "2.0.0",
+  "description": "Space Destroyer II - Retro Arcade Space Shooter with Weapon Upgrades",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["space-invaders", "arcade", "retro", "shooter", "canvas", "html5", "upgrades"],
+  "author": "",
+  "license": "MIT"
+}

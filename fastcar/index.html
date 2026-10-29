@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAST CAR | 3-Lane Retro OutRun Highway Racer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Rotate Device Prompt Overlay for Mobile Portrait -->
+  <div id="rotate-device-overlay" class="rotate-device-overlay">
+    <div class="rotate-phone-anim">📱</div>
+    <div class="rotate-title">ROTATE DEVICE</div>
+    <div class="rotate-desc">Rotate to landscape for full widescreen highway action!</div>
+    <button id="btn-bypass-rotate" class="bypass-rotate-btn">PLAY IN PORTRAIT ANYWAY ✕</button>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="cabinet-header">
+    <a href="../index.html" class="arcade-btn btn-back" id="btn-back-hub" title="Return to Games Dashboard">
+      <span>◀</span> DASHBOARD
+    </a>
+    <div class="logo-container">
+      <span class="logo-icon">🏎️</span>
+      <span class="logo-title">FAST CAR</span>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn" title="Toggle Sound">
+        <span id="sound-icon">🔊</span>
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Scanlines">
+        <span>📺</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">COASTAL HIGHWAY • 3-LANE RETRO RACER</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- OutRun Style Scoreboard HUD -->
+    <div class="scoreboard">
+      <div class="hud-group">
+        <span class="hud-label">SCORE</span>
+        <span id="hud-score" class="hud-val">000000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">STAGE</span>
+        <span id="hud-level" class="hud-val" style="color: #38bdf8;">1</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">SPEED</span>
+        <span id="hud-speed" class="hud-val speed">000 KM/H</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">COINS</span>
+        <span id="hud-coins" class="hud-val coins">🟡 00</span>
+      </div>
+      <div class="hud-group" style="align-items: center;">
+        <span class="hud-label">LIVES</span>
+        <div id="hud-lives" class="lives-tray">
+          <span class="life-car" id="life-1">🚗</span>
+          <span class="life-car" id="life-2">🚗</span>
+          <span class="life-car" id="life-3">🚗</span>
+        </div>
+      </div>
+      <div class="hud-group" style="text-align: right;">
+        <span class="hud-label">HI-SCORE</span>
+        <span id="hud-high-score" class="hud-val">000000</span>
+      </div>
+    </div>
+
+    <!-- Difficulty & Obstacle Density Selector -->
+    <div class="cabinet-difficulty-bar" aria-label="Game Difficulty">
+      <span class="diff-label">DIFFICULTY:</span>
+      <div class="diff-btn-group" id="diff-controls" role="group" aria-label="Game Difficulty">
+        <button class="diff-btn" data-diff="easy" id="btn-diff-easy" title="Easy (1/4 obstacles, wide 4x spacing)">EASY</button>
+        <button class="diff-btn active" data-diff="medium" id="btn-diff-medium" title="Medium (Half obstacles, 2x spacing)">MEDIUM</button>
+        <button class="diff-btn" data-diff="hard" id="btn-diff-hard" title="Hard (Original dense obstacle challenge)">HARD</button>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Game Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <canvas id="fastcar-canvas" width="900" height="460"></canvas>
+        <div id="floating-banner" class="floating-banner">★ COIN COMBO x2 ★</div>
+        <div id="game-overlay" class="game-overlay">
+          <h2 id="overlay-title" class="overlay-title">RACE OVER</h2>
+          <div class="overlay-stats">
+            <div class="overlay-stat-item">
+              <span>FINAL SCORE</span>
+              <span id="overlay-final-score">000000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>STAGE REACHED</span>
+              <span id="overlay-final-stage">STAGE 1</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>COINS COLLECTED</span>
+              <span id="overlay-final-coins">0</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>TOP SPEED</span>
+              <span id="overlay-final-speed">0 KM/H</span>
+            </div>
+          </div>
+          <button id="overlay-restart-btn" class="overlay-restart-btn">DRIVE AGAIN ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Controls Deck for Touch / Mobile -->
+    <div class="controls-deck">
+      <div class="virtual-btn-group">
+        <button id="btn-steer-left" class="virtual-btn" aria-label="Steer Left">
+          <span>◀ LEFT</span>
+          <span class="virtual-btn-sub">A / ◀</span>
+        </button>
+        <button id="btn-steer-right" class="virtual-btn" aria-label="Steer Right">
+          <span>RIGHT ▶</span>
+          <span class="virtual-btn-sub">D / ▶</span>
+        </button>
+      </div>
+
+      <div class="virtual-btn-group">
+        <button id="btn-brake" class="virtual-btn btn-brake" aria-label="Brake">
+          <span>▼ BRAKE</span>
+          <span class="virtual-btn-sub">S / ▼</span>
+        </button>
+        <button id="btn-accel" class="virtual-btn btn-accel" aria-label="Accelerate">
+          <span>▲ ACCEL</span>
+          <span class="virtual-btn-sub">W / ▲</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      LEFT / RIGHT / A / D = SWITCH LANES • UP / W = ACCELERATE • DOWN / S = BRAKE • P = PAUSE • ESC = DASHBOARD
+    </div>
+  </main>
+
+  <script src="js/bundle.js" defer></script>
+</body>
+</html>

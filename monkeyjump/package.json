@@ -1,0 +1,19 @@
+{
+  "name": "monkeyjump",
+  "version": "1.0.0",
+  "description": "Monkey Jump - 1981 Donkey Kong Arcade Scaffolding Classic",
+  "main": "js/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild js/main.js --bundle --outfile=js/bundle.js"
+  },
+  "keywords": [
+    "donkey-kong",
+    "arcade",
+    "retro",
+    "platformer",
+    "chiptune"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "bottomer",
+  "version": "1.0.0",
+  "description": "1983 Bally Midway Tapper Arcade Tribute",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild js/main.js --bundle --outfile=js/bundle.js"
+  }
+}

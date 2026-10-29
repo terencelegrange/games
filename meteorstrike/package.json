@@ -1,0 +1,15 @@
+{
+  "name": "meteorstrike",
+  "version": "1.0.0",
+  "description": "Meteor Strike - 1979 Vector Space Combat Arcade Tribute",
+  "main": "js/bundle.js",
+  "type": "module",
+  "keywords": [
+    "meteorstrike",
+    "asteroids",
+    "arcade",
+    "vector"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "gorillas",
+  "version": "1.0.0",
+  "description": "Gorillas - Classic 1991 QBasic Destructible Skyline Artillery Game",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["gorillas", "qbasic", "artillery", "retro", "destructible", "canvas", "html5"],
+  "author": "",
+  "license": "MIT"
+}

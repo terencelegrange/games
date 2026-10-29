@@ -1,0 +1,12 @@
+{
+  "name": "digging",
+  "version": "1.0.0",
+  "description": "Standalone HTML5 Canvas & Web Audio Digging CGA Arcade Game",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["digger", "cga", "retro", "arcade", "canvas", "html5"],
+  "author": "",
+  "license": "MIT"
+}

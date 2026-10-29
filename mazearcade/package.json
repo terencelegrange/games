@@ -1,0 +1,12 @@
+{
+  "name": "maze-arcade",
+  "version": "1.0.0",
+  "description": "Standalone HTML5 Canvas & Web Audio Maze Arcade Game",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["pacman", "retro", "arcade", "canvas", "html5"],
+  "author": "",
+  "license": "MIT"
+}

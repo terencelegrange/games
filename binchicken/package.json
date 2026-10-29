@@ -1,0 +1,16 @@
+{
+  "name": "binchicken",
+  "version": "1.0.0",
+  "description": "Bin Chicken - Australian Sacred Ibis Flappy Bird Arcade Tribute",
+  "main": "js/bundle.js",
+  "type": "module",
+  "keywords": [
+    "binchicken",
+    "ibis",
+    "flappy",
+    "arcade",
+    "australia"
+  ],
+  "author": "",
+  "license": "MIT"
+}

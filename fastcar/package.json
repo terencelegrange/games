@@ -1,0 +1,12 @@
+{
+  "name": "fastcar",
+  "version": "1.0.0",
+  "description": "Fast Car - Classic 3-Lane Retro OutRun Highway Racer",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["outrun", "racer", "sega", "fastcar", "arcade", "canvas", "html5", "retro"],
+  "author": "",
+  "license": "MIT"
+}

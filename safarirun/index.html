@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAFARI RUN | African Cheetah Endless Runner</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐆</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Rotate Device Prompt Overlay for Mobile Portrait -->
+  <div id="rotate-device-overlay" class="rotate-device-overlay">
+    <div class="rotate-phone-anim">📱</div>
+    <div class="rotate-title">ROTATE DEVICE</div>
+    <div class="rotate-desc">Rotate to landscape for widescreen arcade action!</div>
+    <button id="btn-bypass-rotate" class="bypass-rotate-btn">PLAY IN PORTRAIT ANYWAY ✕</button>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="cabinet-header">
+    <a href="../index.html" class="arcade-btn btn-back" id="btn-back-hub" title="Return to Games Dashboard">
+      <span>◀</span> DASHBOARD
+    </a>
+    <div class="logo-container">
+      <span class="logo-icon">🐆</span>
+      <span class="logo-title">SAFARI RUN</span>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn" title="Toggle Sound">
+        <span id="sound-icon">🔊</span>
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Scanlines">
+        <span>📺</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">AFRICAN CHEETAH DASH</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- Scoreboard HUD -->
+    <div class="scoreboard">
+      <div class="score-box">
+        <span class="score-label">DISTANCE</span>
+        <span id="hud-score" class="score-val">00000</span>
+      </div>
+      <div id="milestone-badge" class="milestone-badge">★ +100 SAFARI PTS ★</div>
+      <div class="score-box" style="text-align: right;">
+        <span class="score-label">HIGH SCORE</span>
+        <span id="hud-high-score" class="score-val">00000</span>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Game Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <canvas id="safari-canvas" width="900" height="300"></canvas>
+        <div id="game-overlay" class="game-overlay">
+          <h2 id="overlay-title" class="overlay-title">GAME OVER</h2>
+          <p id="overlay-sub" class="overlay-sub">PRESS SPACE OR TAP TO RUN AGAIN</p>
+          <button id="overlay-restart-btn" class="overlay-restart-btn">RUN AGAIN ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer HUD (Speed & Time of Day) -->
+    <div class="cabinet-footer-hud">
+      <div class="speed-meter">
+        <span>CHEETAH VELOCITY:</span>
+        <div class="speed-bar-container">
+          <div id="speed-bar-fill" class="speed-bar-fill"></div>
+        </div>
+        <span id="speed-text">60 KM/H</span>
+      </div>
+      <div id="time-of-day-label">SAVANNA NOON</div>
+    </div>
+
+    <!-- Virtual Controls Deck for Mobile / Touch / Quick Click -->
+    <div class="controls-deck">
+      <div class="virtual-btn-group">
+        <button id="btn-virtual-duck" class="virtual-btn btn-duck-action" aria-label="Duck">
+          <span>▼ DUCK</span>
+          <span class="virtual-btn-sub">DOWN / S</span>
+        </button>
+      </div>
+      <div class="virtual-btn-group">
+        <button id="btn-virtual-jump" class="virtual-btn btn-jump-action" aria-label="Jump">
+          <span>▲ JUMP</span>
+          <span class="virtual-btn-sub">SPACE / UP</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      SPACE / UP / W = JUMP (HOLD FOR HIGH LEAP) • DOWN / S = DUCK & FAST-FALL • P = PAUSE • ESC = DASHBOARD
+    </div>
+  </main>
+
+  <script src="js/bundle.js" defer></script>
+</body>
+</html>

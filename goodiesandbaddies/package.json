@@ -1,0 +1,12 @@
+{
+  "name": "goodiesandbaddies",
+  "version": "1.0.0",
+  "description": "Goodies and Baddies - Dark Fantasy Arcade Platformer",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["goodiesandbaddies", "arcade", "retro", "platformer", "arthur", "canvas", "html5"],
+  "author": "",
+  "license": "MIT"
+}

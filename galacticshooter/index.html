@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Galactic Shooter — Retro Galaga Space Arcade</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+
+  <div class="cabinet-wrapper">
+    <!-- Marquee -->
+    <header class="marquee-header">
+      <div class="marquee-title">GALACTIC SHOOTER</div>
+      <div class="marquee-badge">1981 SPACE CLASSIC</div>
+    </header>
+
+    <!-- Screen Housing -->
+    <main class="screen-housing">
+      <!-- HUD Top -->
+      <div class="hud-bar">
+        <div class="hud-item">
+          <span class="hud-label">1UP SCORE</span>
+          <span class="hud-val" id="hud-score">000000</span>
+        </div>
+        <div class="hud-item" style="text-align: right;">
+          <span class="hud-label">HIGH SCORE</span>
+          <span class="hud-val high" id="hud-high-score">036500</span>
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <canvas id="game-canvas" width="480" height="640"></canvas>
+
+      <!-- HUD Bottom -->
+      <div class="hud-bottom">
+        <div class="hud-lives" id="hud-lives">🚀 🚀 🚀</div>
+        <div class="hud-stage" id="hud-stage">STAGE 1</div>
+      </div>
+
+      <!-- Modal Overlay -->
+      <div id="ui-overlay" class="ui-overlay">
+        <h1 class="overlay-title" id="overlay-title">GALACTIC SHOOTER</h1>
+        <div class="overlay-stats" id="overlay-stats">
+          DEFEND THE GALAXY FROM SWARMING ALIEN FLEETS!<br>
+          RESCUE CAPTURED FIGHTERS FOR <span>DUAL FIREPOWER</span>.<br>
+          SURVIVE <span>CHALLENGING STAGES</span> FOR BONUS GLORY.
+        </div>
+        <button id="overlay-btn" class="overlay-btn">LAUNCH MISSION ➜</button>
+      </div>
+    </main>
+
+    <!-- Navigation & Settings Bar -->
+    <div class="control-panel">
+      <div class="nav-links">
+        <a href="../index.html" class="btn-nav">‹ HUB DASHBOARD</a>
+        <a href="../hall-of-fame.html" class="btn-nav">🏆 HALL OF FAME</a>
+      </div>
+      <button id="btn-mute" class="btn-nav">🔊 SOUND</button>
+    </div>
+
+    <!-- Virtual Touch Controller for Mobile -->
+    <div class="touch-controls">
+      <div class="touch-dpad">
+        <button id="btn-left" class="touch-btn" aria-label="Left">◀</button>
+        <button id="btn-right" class="touch-btn" aria-label="Right">▶</button>
+      </div>
+      <button id="btn-fire" class="touch-btn fire" aria-label="Fire">FIRE</button>
+    </div>
+
+    <!-- Key Hints -->
+    <div class="key-hints">
+      <kbd>◀</kbd> <kbd>▶</kbd> or <kbd>A</kbd> <kbd>D</kbd> Move &nbsp;|&nbsp; 
+      <kbd>SPACE</kbd> / <kbd>Z</kbd> Fire &nbsp;|&nbsp; 
+      <kbd>P</kbd> Pause
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

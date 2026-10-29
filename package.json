@@ -1,0 +1,20 @@
+{
+  "name": "games-hub",
+  "version": "1.0.0",
+  "description": "Retro Arcade Master Dashboard and 20 Standalone Browser Games Collection",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "arcade",
+    "retro",
+    "games",
+    "canvas",
+    "web-audio",
+    "html5-game",
+    "javascript"
+  ],
+  "author": "Terence Le Grange",
+  "license": "MIT"
+}
