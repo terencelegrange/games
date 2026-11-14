@@ -1,0 +1,17 @@
+{
+  "name": "biplaneflyer",
+  "version": "1.0.0",
+  "description": "Biplane Flyer - 1984 Sopwith Camel Aerial Combat and Runway Landing Arcade Classic",
+  "main": "js/main.js",
+  "type": "module",
+  "keywords": [
+    "sopwith",
+    "biplane",
+    "flight",
+    "arcade",
+    "retro",
+    "1984"
+  ],
+  "author": "",
+  "license": "MIT"
+}

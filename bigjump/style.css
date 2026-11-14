@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --bg-color: #030712;
+  --track-clay: #b91c1c;
+  --sand-gold: #facc15;
+  --stadium-cyan: #00f0ff;
+  --accent-green: #22c55e;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --font-retro: 'Press Start 2P', monospace, sans-serif;
+  --font-display: 'VT323', monospace, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-retro);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CRT Screen Scanline Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%),
+    radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.45) 100%);
+  background-size: 100% 4px, 100% 100%;
+}
+
+.crt-overlay.disabled {
+  opacity: 0;
+}
+
+/* Header */
+.arcade-header {
+  width: 100%;
+  background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+  border-bottom: 3px solid var(--stadium-cyan);
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.25);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-back {
+  font-size: 0.75rem;
+  color: var(--stadium-cyan);
+  text-decoration: none;
+  padding: 6px 12px;
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.brand-back:hover {
+  background: rgba(0, 240, 255, 0.35);
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  color: var(--stadium-cyan);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+  letter-spacing: 2px;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.arcade-btn {
+  background: #111827;
+  border: 2px solid var(--stadium-cyan);
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+}
+
+.arcade-btn:hover {
+  background: var(--stadium-cyan);
+  color: #000;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.arcade-btn.active {
+  background: rgba(0, 240, 255, 0.25);
+}
+
+/* Cabinet Stage */
+.cabinet-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem 2rem;
+  width: 100%;
+  max-width: 860px;
+}
+
+.cabinet-sub-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.stage-title {
+  font-size: 0.75rem;
+  color: var(--sand-gold);
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.5);
+}
+
+/* 1983 Konami Top Scoreboard Monitor Box */
+.scoreboard-monitor {
+  width: 100%;
+  background: #000000;
+  border: 4px solid var(--stadium-cyan);
+  box-shadow: 
+    0 0 0 2px #0f172a,
+    0 0 15px rgba(0, 240, 255, 0.4),
+    inset 0 0 12px rgba(0, 240, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+  padding-bottom: 6px;
+}
+
+.player-score-tag {
+  color: var(--stadium-cyan);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.player-score-tag span {
+  color: #ffffff;
+  margin-left: 8px;
+}
+
+.hiscore-tag {
+  color: #f43f5e;
+  font-size: 0.75rem;
+}
+
+.hiscore-tag span {
+  color: #ffffff;
+}
+
+.qualify-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  text-align: center;
+  font-size: 0.65rem;
+}
+
+.qualify-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.qualify-lbl {
+  color: var(--text-dim);
+  font-size: 0.5rem;
+}
+
+.qualify-val {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.qualify-val.target {
+  color: var(--accent-green);
+}
+
+.qualify-val.try {
+  color: var(--sand-gold);
+}
+
+/* Cabinet Frame & Game Canvas */
+.cabinet-frame {
+  width: 100%;
+  background: #0f172a;
+  border: 8px solid #1e293b;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 
+    0 0 0 2px var(--stadium-cyan),
+    0 0 25px rgba(0, 240, 255, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 480;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Bottom Speedometer HUD */
+.speedometer-bar-container {
+  width: 100%;
+  margin-top: 0.8rem;
+  background: #000000;
+  border: 2px solid var(--stadium-cyan);
+  border-radius: 6px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.speed-title {
+  color: #ffffff;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.speed-track-bar {
+  flex: 1;
+  height: 18px;
+  background: #1e293b;
+  border: 2px solid #334155;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.speed-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e 0%, #facc15 65%, #ef4444 100%);
+  transition: width 0.06s linear;
+}
+
+.speed-numeric-readout {
+  color: var(--sand-gold);
+  font-size: 0.85rem;
+  font-weight: bold;
+  min-width: 120px;
+  text-align: right;
+}
+
+/* Floating Banner */
+.floating-banner {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  background: rgba(15, 23, 42, 0.95);
+  border: 2px solid var(--sand-gold);
+  color: var(--sand-gold);
+  font-size: 0.85rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 20;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.floating-banner.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Game Overlay */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 30;
+  backdrop-filter: blur(4px);
+}
+
+.game-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-title {
+  font-size: 1.8rem;
+  color: #ef4444;
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
+  letter-spacing: 3px;
+}
+
+.overlay-stats {
+  display: flex;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+}
+
+.overlay-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.overlay-stat-item span:first-child {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+.overlay-stat-item span:last-child {
+  font-size: 1.1rem;
+  color: var(--sand-gold);
+}
+
+.overlay-restart-btn {
+  background: var(--stadium-cyan);
+  border: none;
+  color: #000;
+  padding: 1rem 2rem;
+  font-family: var(--font-retro);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+  transition: all 0.15s ease;
+}
+
+.overlay-restart-btn:hover {
+  background: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.9);
+}
+
+/* Controls Deck for Touch / Mobile Handheld */
+.controls-deck {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+  padding: 0.8rem 1rem;
+  background: #0f172a;
+  border: 2px solid #1e293b;
+  border-radius: 12px;
+}
+
+.run-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-run {
+  width: 84px;
+  height: 56px;
+  background: #1e293b;
+  border: 2px solid var(--stadium-cyan);
+  color: #fff;
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.1s ease, transform 0.1s ease;
+}
+
+.btn-run:active,
+.btn-run.active {
+  background: var(--stadium-cyan);
+  color: #000;
+  transform: scale(0.94);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
+}
+
+.action-btn-jump {
+  width: 120px;
+  height: 56px;
+  background: #2563eb;
+  border: 3px solid var(--stadium-cyan);
+  color: #fff;
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.action-btn-jump:active,
+.action-btn-jump.active {
+  background: #3b82f6;
+  transform: scale(0.94);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+}
+
+.controls-hint {
+  margin-top: 1rem;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .brand-title {
+    font-size: 0.9rem;
+  }
+  .qualify-row {
+    font-size: 0.55rem;
+  }
+  .btn-run {
+    width: 72px;
+    height: 48px;
+    font-size: 0.55rem;
+  }
+  .action-btn-jump {
+    width: 100px;
+    height: 48px;
+    font-size: 0.65rem;
+  }
+}
+
+.controls-deck button { touch-action: none; }

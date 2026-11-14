@@ -1,0 +1,20 @@
+{
+  "name": "galacticshooter",
+  "version": "1.0.0",
+  "description": "Galactic Shooter - Galaga Retro Arcade Tribute with Dual Fighters & Tractor Beam",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "galaga",
+    "arcade",
+    "space-shooter",
+    "retro",
+    "tractor-beam",
+    "dual-fighter"
+  ],
+  "author": "",
+  "license": "MIT"
+}

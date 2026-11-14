@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biplane Flyer • Sopwith-style Aerial Combat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+</head>
+<body>
+
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Arcade Cabinet Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="../index.html" class="brand-back" id="btn-back-hub" title="Return to Games Dashboard">◀ DASHBOARD</a>
+      <h1 class="brand-title">✈️ BIPLANE FLYER</h1>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn active" title="Toggle Sound (M)">
+        <span id="sound-icon">🔊</span> SOUND
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Filter">
+        CRT: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">WESTERN FRONT • 1984 SOPWITH TRIBUTE</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- Flight Instrument Cockpit HUD -->
+    <div class="scoreboard">
+      <div class="hud-group">
+        <span class="hud-label">SCORE</span>
+        <span id="hud-score" class="hud-val score">000000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">HI-SCORE</span>
+        <span id="hud-high-score" class="hud-val">000000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">SPEED</span>
+        <span id="hud-speed" class="hud-val speed">0 KTS</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">ALTITUDE</span>
+        <span id="hud-alt" class="hud-val alt">0 FT</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">THROTTLE</span>
+        <span id="hud-throttle" class="hud-val throttle">0%</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">FUEL</span>
+        <span id="hud-fuel" class="hud-val fuel">100%</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">BOMBS</span>
+        <span id="hud-bombs" class="hud-val bombs">💣 💣 💣 💣 💣</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">LIVES</span>
+        <span id="hud-lives" class="hud-val lives">✈️ ✈️ ✈️</span>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <canvas id="biplane-canvas" width="800" height="480"></canvas>
+        <div id="floating-banner" class="floating-banner">★ MISSION 1 ACCOMPLISHED! ★</div>
+        <div id="game-overlay" class="game-overlay">
+          <h2 id="overlay-title" class="overlay-title">CRASHED!</h2>
+          <div class="overlay-stats">
+            <div class="overlay-stat-item">
+              <span>FINAL SCORE</span>
+              <span id="overlay-final-score">000000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>MISSION</span>
+              <span id="overlay-final-stage">MISSION 1</span>
+            </div>
+          </div>
+          <button id="overlay-restart-btn" class="overlay-restart-btn">SCRAMBLE AGAIN ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Controls Deck for Touch / Mobile Handheld -->
+    <div class="controls-deck">
+      <div class="virtual-stick-group">
+        <!-- Throttle controls -->
+        <div class="stick-column">
+          <button id="dpad-throttle-up" class="control-btn" aria-label="Throttle Up">
+            <span>▲</span>
+            <span>+THR</span>
+          </button>
+          <button id="dpad-throttle-down" class="control-btn" aria-label="Throttle Down / Brake">
+            <span>▼</span>
+            <span>-THR</span>
+          </button>
+        </div>
+        <!-- Pitch controls -->
+        <div class="stick-column">
+          <button id="dpad-pitch-up" class="control-btn" aria-label="Pitch Up (Climb)">
+            <span>◀</span>
+            <span>PULL UP</span>
+          </button>
+          <button id="dpad-pitch-down" class="control-btn" aria-label="Pitch Down (Dive)">
+            <span>▶</span>
+            <span>DIVE</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="action-buttons">
+        <button id="btn-action-flip" class="control-btn" aria-label="Roll plane upright or inverted">ROLL</button>
+        <button id="btn-action-fire" class="action-btn-fire" aria-label="Fire Machine Gun">FIRE</button>
+        <button id="btn-action-bomb" class="action-btn-bomb" aria-label="Drop Bomb">BOMB</button>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      DESTROY ALL FOUR GROUND TARGETS, THEN LAND AT HOME. STOP WITH THROTTLE OFF TO REFUEL AND REARM.<br>
+      HOLD UP + LEFT TO TAKE OFF. RELEASE LEFT ONCE CLIMBING. LOOP TO REVERSE, THEN ROLL UPRIGHT.<br>
+      W / UP = THROTTLE UP • S / DOWN = THROTTLE DOWN/BRAKE • A / LEFT = PULL UP • D / RIGHT = DIVE<br>
+      SPACE = FIRE • B = BOMB • F / PERIOD = ROLL • P = PAUSE • M = SOUND • ESC = DASHBOARD<br>CLASSIC KEYS: X / Z = THROTTLE • COMMA / SLASH = PITCH • PERIOD = ROLL
+    </div>
+  </main>
+
+  <script src="./js/bundle.js" type="module"></script>
+</body>
+</html>

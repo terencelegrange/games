@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Wars - Tactical Real-Time Strategy Base Conquest Game</title>
+    <meta name="description" content="Play Tank Wars, a tactical real-time strategy base conquest game. Deploy tanks and helicopters, capture bases, manage unit capacities, and defeat the enemy AI across multiple strategic levels.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Rotate Device Prompt Overlay for Mobile Portrait -->
+    <div id="rotate-device-overlay" class="rotate-device-overlay">
+        <div class="rotate-phone-anim">📱</div>
+        <div class="rotate-title">ROTATE DEVICE</div>
+        <div class="rotate-desc">Rotate to landscape for full tactical base battlefield commands!</div>
+        <button id="btn-bypass-rotate" class="bypass-rotate-btn">PLAY IN PORTRAIT ANYWAY ✕</button>
+    </div>
+
+    <main id="game-container">
+        <header id="header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <a href="../../index.html" class="hub-btn" title="Back to Games Vault">◀ VAULT</a>
+                <button type="button" class="hub-btn quit-hub-btn" id="quit-to-menu-btn" title="Quit to Battle Selection">QUIT</button>
+                <h1 id="title">TANK WARS <small>V2</small></h1>
+            </div>
+            <section id="level-select" aria-label="Level Selection">
+                <button class="level-btn active" data-level="1" id="btn-level-1">LVL 1</button>
+                <button class="level-btn" data-level="2" id="btn-level-2">LVL 2</button>
+                <button class="level-btn" data-level="3" id="btn-level-3">LVL 3</button>
+                <button class="level-btn" data-level="4" id="btn-level-4">LVL 4</button>
+                <button class="level-btn" data-level="5" id="btn-level-5">LVL 5</button>
+                <button class="level-btn" data-level="6" id="btn-level-6">LVL 6</button>
+            </section>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <section id="stats" aria-label="Game Statistics">
+                    <div class="stat">
+                        <span class="stat-label">Time</span>
+                        <span class="stat-value" id="time">00:00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Wave</span>
+                        <span class="stat-value" id="wave">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Bases</span>
+                        <span class="stat-value" id="bases">0/0</span>
+                    </div>
+                </section>
+                <button class="btn" id="fullscreenBtn" title="Toggle Fullscreen (Shift+F)">⛶ FULLSCREEN</button>
+            </div>
+        </header>
+        
+        <div id="game-main">
+            <section id="canvas-container" aria-label="Game Map">
+                <canvas id="gameCanvas"></canvas>
+                <div id="message-overlay">
+                    <h2 id="message-title">VICTORY</h2>
+                    <p id="message-text">All enemy bases captured!</p>
+                    <button class="btn primary" id="message-btn">CONTINUE</button>
+                </div>
+            </section>
+            
+            <aside id="info-panel" aria-live="polite">
+                <div class="panel-header">
+                    <h3>TACTICAL INTEL</h3>
+                </div>
+                <div id="base-info">
+                    <div class="info-row">
+                        <span>Owner</span>
+                        <span id="info-owner">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Units</span>
+                        <span id="info-units">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Capture Cost</span>
+                        <span id="info-cost">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Unit Cap</span>
+                        <span id="info-cap">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Type</span>
+                        <span id="info-type">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Armored</span>
+                        <span id="info-armored">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Fortification</span>
+                        <span id="info-reinforced">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Fortify Cost</span>
+                        <span id="info-upgrade-cost">-</span>
+                    </div>
+                    <div class="info-row" id="info-frontline-row">
+                        <span>Frontline</span>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span id="info-frontline">-</span>
+                            <button id="info-stop-frontline-btn" class="btn btn-stop-fl" style="display: none;" title="Cancel frontline supply line">STOP</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="standby-info">
+                    <div class="scanner-icon">⛶</div>
+                    <div class="standby-title">STANDBY SCANNER</div>
+                    <p class="standby-desc">Hover over or click any base on the map to inspect garrison, defense fortification, and frontline routes.</p>
+                    <div class="tactical-tips">
+                        <div class="tip-title">COMMAND TIPS</div>
+                        <div class="tip-item"><span class="key">CLICK</span> Half troops</div>
+                        <div class="tip-item"><span class="key">DBL-CLK</span> All troops</div>
+                        <div class="tip-item"><span class="key">DRAG</span> Target dispatch</div>
+                        <div class="tip-item"><span class="key">R-CLICK</span> Fortify (+100% Def)</div>
+                        <div class="tip-item"><span class="key">F</span> Frontline mode</div>
+                        <div class="tip-item"><span class="key">SHIFT+F</span> Fullscreen</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        
+        <footer id="controls" aria-label="Game Controls">
+            <div class="control-group">
+                <button class="btn primary" id="startBtn">START WAVE</button>
+                <button class="btn" id="restartBtn">RESTART</button>
+            </div>
+            <div class="control-group" id="mode-controls" aria-label="Dispatch Mode">
+                <span style="color: #64748b; font-size: 11px; font-weight: 700; letter-spacing: 1px;">MODE:</span>
+                <button class="btn mode-btn active" id="modeMoveBtn" data-mode="move" title="Standard troop movement (Hotkey: M)">MOVE [M]</button>
+                <button class="btn mode-btn" id="modeFrontlineBtn" data-mode="frontline" title="Auto-send troops whenever 2 accumulate (Hotkey: F)">FRONTLINE [F]</button>
+            </div>
+            <div id="control-tips" style="display: flex; align-items: center; gap: 14px; font-size: 11px; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">
+                <span><strong style="color:#38bdf8;">MOVE [M]</strong>: 50% or ALL</span>
+                <span>•</span>
+                <span><strong style="color:#f59e0b;">FRONTLINE [F]</strong>: Stream Allied (Right-Click/X: Stop)</span>
+                <span>•</span>
+                <span><strong style="color:#10b981;">RIGHT-CLICK</strong>: Fortify (Move Mode)</span>
+            </div>
+            <div id="legend" aria-label="Map Legend">
+                <div class="legend-item">
+                    <div class="legend-color player"></div>
+                    <span>Player</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color enemy"></div>
+                    <span>Enemy</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color neutral"></div>
+                    <span>Neutral</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <span style="color: #64748b; font-size: 11px; font-weight: 700; letter-spacing: 1px;">SPEED:</span>
+                <div id="speed-controls">
+                    <button class="speed-btn active" data-speed="1" id="btn-speed-1">1x</button>
+                    <button class="speed-btn" data-speed="2" id="btn-speed-2">2x</button>
+                    <button class="speed-btn" data-speed="4" id="btn-speed-4">4x</button>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <section id="launch-screen" class="launch-screen" aria-label="Game setup">
+      <div class="launch-panel">
+        <div class="launch-top-bar">
+          <div class="launch-kicker">TANK WARS</div>
+          <a href="../../index.html" class="launch-home-btn" id="launch-home-btn" title="Exit to Games Vault Dashboard">🏠 EXIT TO VAULT</a>
+        </div>
+        <h2>CHOOSE YOUR BATTLE</h2>
+        <p id="launch-user">Checking Games Vault account…</p>
+        <div id="launch-error" class="launch-error" role="alert"></div>
+        <div id="mode-selection" class="mode-grid">
+          <button class="mode-card" id="play-solo"><strong>VS COMPUTER</strong><span>Classic campaign against the tactical AI</span></button>
+          <button class="mode-card" id="play-online"><strong>ONLINE PLAYER</strong><span>LAN matchmaking or a private game code</span></button>
+        </div>
+        <div id="online-options" class="online-options" hidden>
+          <label>Battlefield <select id="online-level"><option value="1">Level 1 — Tutorial Valley</option><option value="2">Level 2 — Iron Ridge</option><option value="3">Level 3 — Eagle's Nest</option><option value="4">Level 4 — River Delta</option><option value="5">Level 5 — Air Assault</option><option value="6">Level 6 — Global Escalation</option></select></label>
+          <div class="online-actions"><button class="btn primary" id="find-opponent">FIND OPPONENT</button><button class="btn" id="create-room">CREATE PRIVATE GAME</button></div>
+          <div class="join-row"><input id="game-code" maxlength="6" placeholder="GAME CODE" autocomplete="off"><button class="btn" id="join-room">JOIN</button></div>
+          <div class="online-bottom-nav">
+            <button class="text-btn" id="online-back">← Back to Solo / Mode Select</button>
+            <a href="../../index.html" class="launch-exit-btn-link" id="online-exit-home">🏠 Exit to Games Vault</a>
+          </div>
+        </div>
+        <div id="room-panel" class="room-panel" hidden>
+          <div class="launch-kicker">GAME CODE</div><div id="room-code" class="room-code">------</div>
+          <p id="room-status">Waiting for opponent…</p><div id="room-players" class="room-players"></div>
+          <div class="room-actions">
+            <button class="btn primary ready-btn" id="ready-game">READY TO START</button>
+            <button class="btn cancel-btn" id="cancel-room">QUIT / CANCEL</button>
+            <a href="../../index.html" class="launch-exit-btn-link" id="room-exit-home" style="justify-content: center; margin-top: 6px;">🏠 Exit to Games Vault</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="network-banner" class="network-banner" hidden></div>
+    <script src="js/online.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

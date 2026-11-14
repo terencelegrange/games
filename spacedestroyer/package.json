@@ -1,0 +1,12 @@
+{
+  "name": "spacedestroyer",
+  "version": "1.0.0",
+  "description": "Space Destroyer - Classic 80s Arcade Space Invaders",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["space-invaders", "arcade", "retro", "shooter", "canvas", "html5"],
+  "author": "",
+  "license": "MIT"
+}

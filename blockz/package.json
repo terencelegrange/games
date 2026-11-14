@@ -1,0 +1,12 @@
+{
+  "name": "blockz",
+  "version": "1.0.0",
+  "description": "Standalone HTML5 Canvas & Web Audio Blockz Puzzle Game",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["tetris", "puzzle", "retro", "arcade", "canvas", "html5"],
+  "author": "",
+  "license": "MIT"
+}

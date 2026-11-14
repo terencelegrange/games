@@ -1,0 +1,12 @@
+{
+  "name": "safarirun",
+  "version": "1.0.0",
+  "description": "Safari Run - African Cheetah Endless Runner (Chrome Dino Replica)",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["cheetah", "safari", "runner", "arcade", "canvas", "html5", "dino"],
+  "author": "",
+  "license": "MIT"
+}
