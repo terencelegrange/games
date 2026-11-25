@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --bg-color: #050a0e;
+  --panel-border: #1e3a5f;
+  --accent-olive: #65a30d;
+  --accent-gold: #facc15;
+  --accent-cyan: #38bdf8;
+  --accent-crimson: #ef4444;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --font-retro: 'Press Start 2P', monospace, sans-serif;
+  --font-display: 'VT323', monospace, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-retro);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CRT Screen Scanline Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%),
+    radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.45) 100%);
+  background-size: 100% 4px, 100% 100%;
+}
+
+.crt-overlay.disabled {
+  opacity: 0;
+}
+
+/* Header */
+.arcade-header {
+  width: 100%;
+  background: linear-gradient(180deg, #162438 0%, #091320 100%);
+  border-bottom: 3px solid #2563eb;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-back {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  text-decoration: none;
+  padding: 6px 12px;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.brand-back:hover {
+  background: rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  color: #60a5fa;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+  letter-spacing: 2px;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.arcade-btn {
+  background: #0f1c2e;
+  border: 2px solid #2563eb;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+}
+
+.arcade-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.6);
+  transform: translateY(-2px);
+}
+
+.arcade-btn.active {
+  background: rgba(37, 99, 235, 0.3);
+}
+
+/* Cabinet Stage */
+.cabinet-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem 2rem;
+  width: 100%;
+  max-width: 860px;
+}
+
+.cabinet-sub-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.stage-title {
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.5);
+}
+
+/* Flight Instrument Cockpit Scoreboard */
+.scoreboard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  background: #0b1522;
+  border: 2px solid #1e3a5f;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 0.8rem;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.hud-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.hud-label {
+  font-size: 0.45rem;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.hud-val {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.hud-val.score {
+  color: var(--accent-gold);
+}
+
+.hud-val.speed {
+  color: var(--accent-cyan);
+}
+
+.hud-val.alt {
+  color: #34d399;
+}
+
+.hud-val.throttle {
+  color: #f97316;
+}
+
+.hud-val.fuel {
+  color: #eab308;
+}
+
+.hud-val.bombs {
+  color: #f87171;
+  font-size: 0.65rem;
+}
+
+.hud-val.lives {
+  font-size: 0.65rem;
+}
+
+/* Cabinet Frame & Game Canvas */
+.cabinet-frame {
+  width: 100%;
+  background: #0d1a29;
+  border: 8px solid #1e3a5f;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 
+    0 0 0 2px #2563eb,
+    0 0 25px rgba(37, 99, 235, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 480;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Floating Banner */
+.floating-banner {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  background: rgba(10, 20, 35, 0.95);
+  border: 2px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-size: 0.85rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 20;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.floating-banner.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Game Overlay */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 10, 18, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 30;
+  backdrop-filter: blur(4px);
+}
+
+.game-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-title {
+  font-size: 1.8rem;
+  color: var(--accent-crimson);
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
+  letter-spacing: 3px;
+}
+
+.overlay-stats {
+  display: flex;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: 1px solid #1e3a5f;
+}
+
+.overlay-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.overlay-stat-item span:first-child {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+.overlay-stat-item span:last-child {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+}
+
+.overlay-restart-btn {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-family: var(--font-retro);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+  transition: all 0.15s ease;
+}
+
+.overlay-restart-btn:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.9);
+}
+
+/* Controls Deck for Touch / Mobile Handheld */
+.controls-deck {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+  padding: 0.8rem 1rem;
+  background: #0b1522;
+  border: 2px solid #1e3a5f;
+  border-radius: 12px;
+}
+
+.virtual-stick-group {
+  display: flex;
+  gap: 12px;
+}
+
+.stick-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.control-btn {
+  width: 76px;
+  height: 48px;
+  background: #162438;
+  border: 2px solid #2563eb;
+  color: #fff;
+  font-family: var(--font-retro);
+  font-size: 0.55rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.1s ease, transform 0.1s ease;
+}
+
+.control-btn:active,
+.control-btn.active {
+  background: #2563eb;
+  transform: scale(0.94);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.7);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.action-btn-fire {
+  width: 90px;
+  height: 60px;
+  background: #b91c1c;
+  border: 3px solid #ef4444;
+  color: #fff;
+  font-family: var(--font-retro);
+  font-size: 0.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.action-btn-fire:active,
+.action-btn-fire.active {
+  background: #dc2626;
+  transform: scale(0.92);
+}
+
+.action-btn-bomb {
+  width: 90px;
+  height: 60px;
+  background: #b45309;
+  border: 3px solid #f59e0b;
+  color: #fff;
+  font-family: var(--font-retro);
+  font-size: 0.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.action-btn-bomb:active,
+.action-btn-bomb.active {
+  background: #d97706;
+  transform: scale(0.92);
+}
+
+.controls-hint {
+  margin-top: 1rem;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .scoreboard {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .brand-title {
+    font-size: 0.9rem;
+  }
+  .control-btn {
+    width: 68px;
+    height: 44px;
+    font-size: 0.5rem;
+  }
+  .action-btn-fire,
+  .action-btn-bomb {
+    width: 78px;
+    height: 52px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scoreboard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .control-btn {
+    width: 60px;
+    height: 40px;
+    font-size: 0.45rem;
+  }
+  .action-btn-fire,
+  .action-btn-bomb {
+    width: 68px;
+    height: 46px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Keep simultaneous touch controls usable on small screens. */
+.controls-deck button { touch-action: none; }
+@media (max-width: 600px) {
+  .arcade-header, .brand-group, .cabinet-sub-bar { flex-wrap: wrap; gap: 10px; }
+  .arcade-header { position: static; padding: 12px; }
+  .stage-title { font-size: 0.55rem; line-height: 1.6; }
+  .controls-deck { padding: 8px; gap: 8px; flex-wrap: wrap; }
+  .action-buttons { gap: 6px; align-items: center; }
+  .cabinet-stage { padding: 12px 6px; }
+  .cabinet-frame { border-width: 4px; padding: 3px; }
+  .floating-banner { white-space: normal; width: 90%; font-size: 0.6rem; }
+}

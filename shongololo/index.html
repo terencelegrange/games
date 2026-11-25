@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shongololo • 1998 Nokia Snake Classic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐛</text></svg>">
+</head>
+<body>
+
+  <!-- Arcade Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="../index.html" class="brand-back" id="btn-back-hub" title="Return to Games Dashboard">◀ DASHBOARD</a>
+      <h1 class="brand-title">🐛 SHONGOLOLO</h1>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn active" title="Toggle Sound (M)">
+        <span id="sound-icon">🔊</span> SOUND
+      </button>
+    </div>
+  </header>
+
+  <!-- Phone Stage -->
+  <main class="phone-stage">
+    <div class="phone-sub-bar">
+      <span class="stage-title">1998 NOKIA CLASSIC</span>
+      <div style="display: flex; gap: 6px;">
+        <button id="btn-cycle-speed" class="arcade-btn" title="Cycle Game Speed (1-9)">SPEED: 5</button>
+        <button id="btn-cycle-maze" class="arcade-btn" title="Cycle Maze Type">MAZE: BOX</button>
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESET</button>
+      </div>
+    </div>
+
+    <!-- Retro Phone Chassis -->
+    <div class="phone-chassis">
+      <div class="phone-earpiece"></div>
+      <div class="nokia-brand">NOKIA</div>
+
+      <!-- LCD Screen Bezel -->
+      <div class="lcd-bezel">
+        <div class="lcd-hud-bar">
+          <div>SCR:<span id="hud-score">0000</span></div>
+          <div>HI:<span id="hud-high-score">0000</span></div>
+          <div>LEN:<span id="hud-length">4</span></div>
+          <div id="hud-speed">SPD 5</div>
+          <div id="hud-maze">BOX</div>
+        </div>
+
+        <div id="game-canvas-container" class="canvas-container">
+          <canvas id="shongololo-canvas" width="420" height="280"></canvas>
+          <div id="game-overlay" class="game-overlay">
+            <h2 id="overlay-title" class="overlay-title">GAME OVER</h2>
+            <div class="overlay-stats">
+              <div>SCORE: <span id="overlay-final-score">0000</span></div>
+              <div>LENGTH: <span id="overlay-final-length">4</span></div>
+            </div>
+            <button id="overlay-restart-btn" class="overlay-restart-btn">PLAY AGAIN ➜</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Keypad -->
+      <div class="phone-keypad">
+        <!-- D-Pad Rocker -->
+        <div class="keypad-nav">
+          <button id="dpad-up" class="nav-btn" aria-label="Up">▲</button>
+          <div class="nav-row">
+            <button id="dpad-left" class="nav-btn" aria-label="Left">◀</button>
+            <button id="dpad-down" class="nav-btn" aria-label="Down">▼</button>
+            <button id="dpad-right" class="nav-btn" aria-label="Right">▶</button>
+          </div>
+        </div>
+
+        <!-- 3x4 Numeric Keypad -->
+        <div class="num-grid">
+          <button class="num-key" id="key-1"><span class="num-label">1</span><span class="num-sub">_</span></button>
+          <button class="num-key" id="key-2"><span class="num-label">2 ▲</span><span class="num-sub">abc</span></button>
+          <button class="num-key" id="key-3"><span class="num-label">3</span><span class="num-sub">def</span></button>
+
+          <button class="num-key" id="key-4"><span class="num-label">4 ◀</span><span class="num-sub">ghi</span></button>
+          <button class="num-key" id="key-5"><span class="num-label">5 OK</span><span class="num-sub">jkl</span></button>
+          <button class="num-key" id="key-6"><span class="num-label">6 ▶</span><span class="num-sub">mno</span></button>
+
+          <button class="num-key" id="key-7"><span class="num-label">7</span><span class="num-sub">pqrs</span></button>
+          <button class="num-key" id="key-8"><span class="num-label">8 ▼</span><span class="num-sub">tuv</span></button>
+          <button class="num-key" id="key-9"><span class="num-label">9</span><span class="num-sub">wxyz</span></button>
+
+          <button class="num-key" id="key-star"><span class="num-label">*</span></button>
+          <button class="num-key" id="key-0"><span class="num-label">0</span></button>
+          <button class="num-key" id="key-hash"><span class="num-label">#</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      2 / 4 / 6 / 8 OR ARROWS / WASD = STEER • 5 / SPACE = START • SWIPE ON LCD TO TURN • P = PAUSE • ESC = DASHBOARD
+    </div>
+  </main>
+
+  <script src="./js/bundle.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Jump • 1983 Track & Field Long Jump Classic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏃</text></svg>">
+</head>
+<body>
+
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Arcade Cabinet Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="../index.html" class="brand-back" id="btn-back-hub" title="Return to Games Dashboard">◀ DASHBOARD</a>
+      <h1 class="brand-title">🏃 BIG JUMP</h1>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn active" title="Toggle Sound (M)">
+        <span id="sound-icon">🔊</span> SOUND
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Filter">
+        CRT: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">WORLD ATHLETICS • LONG JUMP 1983</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- 1983 Konami Top Scoreboard Monitor Box -->
+    <div class="scoreboard-monitor">
+      <div class="score-row-top">
+        <div class="player-score-tag">1UP <span id="hud-score">000000</span></div>
+        <div class="hiscore-tag">TOP <span id="hud-high-score">000000</span></div>
+      </div>
+      <div class="qualify-row">
+        <div class="qualify-item">
+          <span class="qualify-lbl">ROUND</span>
+          <span id="hud-round" class="qualify-val">1</span>
+        </div>
+        <div class="qualify-item">
+          <span class="qualify-lbl">QUALIFY</span>
+          <span id="hud-qualify" class="qualify-val target">7m00</span>
+        </div>
+        <div class="qualify-item">
+          <span class="qualify-lbl">1ST TRY</span>
+          <span id="hud-try-1" class="qualify-val try">--m--</span>
+        </div>
+        <div class="qualify-item">
+          <span class="qualify-lbl">2ND TRY</span>
+          <span id="hud-try-2" class="qualify-val try">--m--</span>
+        </div>
+        <div class="qualify-item">
+          <span class="qualify-lbl">3RD TRY</span>
+          <span id="hud-try-3" class="qualify-val try">--m--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <canvas id="jump-canvas" width="800" height="480"></canvas>
+        <div id="floating-banner" class="floating-banner">★ QUALIFIED! ★</div>
+        <div id="game-overlay" class="game-overlay">
+          <h2 id="overlay-title" class="overlay-title">GAME OVER</h2>
+          <div class="overlay-stats">
+            <div class="overlay-stat-item">
+              <span>FINAL SCORE</span>
+              <span id="overlay-final-score">000000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>BEST JUMP</span>
+              <span id="overlay-best-jump">0m00</span>
+            </div>
+          </div>
+          <button id="overlay-restart-btn" class="overlay-restart-btn">PLAY AGAIN ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Speedometer HUD -->
+    <div class="speedometer-bar-container">
+      <span class="speed-title">SPEED</span>
+      <div class="speed-track-bar">
+        <div id="speed-bar-fill" class="speed-bar-fill"></div>
+      </div>
+      <span id="hud-speed-val" class="speed-numeric-readout">0 cm/sec</span>
+    </div>
+
+    <!-- Virtual Controls Deck for Touch / Mobile Handheld -->
+    <div class="controls-deck">
+      <div class="run-buttons">
+        <button id="btn-run-left" class="btn-run" aria-label="Step Left Foot">RUN L<br>◀ [←]</button>
+        <button id="btn-run-right" class="btn-run" aria-label="Step Right Foot">RUN R<br>[→] ▶</button>
+      </div>
+
+      <button id="btn-action-jump" class="action-btn-jump" aria-label="Hold to Stop and Set Angle, Release to Jump">
+        JUMP<br>[SPACE]
+      </button>
+    </div>
+
+    <div class="controls-hint">
+      CAMERA FOLLOWS YOUR RUN-UP: ALTERNATE LEFT/RIGHT (OR A/D, Z/X) TO BUILD SPEED • HOLD SPACE BEFORE THE RED LINE TO STOP AND SET ANGLE • RELEASE NEAR 45° TO JUMP • P = PAUSE
+    </div>
+  </main>
+
+  <script src="./js/bundle.js" type="module"></script>
+</body>
+</html>

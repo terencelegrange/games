@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bin Chicken • Australian Sacred Ibis Flappy Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗑️</text></svg>">
+</head>
+<body>
+
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Arcade Cabinet Header -->
+  <header class="arcade-header">
+    <div class="brand-group">
+      <a href="../index.html" class="brand-back" id="btn-back-hub" title="Return to Games Dashboard">◀ DASHBOARD</a>
+      <h1 class="brand-title">🗑️ BIN CHICKEN</h1>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn active" title="Toggle Sound (M)">
+        <span id="sound-icon">🔊</span> SOUND
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Filter">
+        CRT: ON
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">AUSTRALIAN SACRED IBIS • RETRO FLAPPY ARCADE</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- Scoreboard HUD -->
+    <div class="scoreboard">
+      <div class="hud-group">
+        <span class="hud-label">1UP SCORE</span>
+        <span id="hud-score" class="hud-val score">0000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">HIGH SCORE</span>
+        <span id="hud-high-score" class="hud-val">0000</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">CHIPS</span>
+        <span id="hud-chips" class="hud-val chips">0</span>
+      </div>
+      <div class="hud-group">
+        <span class="hud-label">RANK</span>
+        <span id="hud-rank" class="hud-val">ROOKIE</span>
+      </div>
+    </div>
+
+    <!-- Cabinet Frame & Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container" tabindex="0" role="button" aria-label="Tap to Flap">
+        <canvas id="binchicken-canvas" width="480" height="640"></canvas>
+        <div id="floating-banner" class="floating-banner">★ HOT CHIP SNATCHED! +5 ★</div>
+        
+        <!-- Ready Overlay Hint -->
+        <div id="ready-hint" class="ready-hint">
+          <h3>FLAP TO FLY!</h3>
+          <p>PRESS SPACE, UP ARROW, OR TAP SCREEN</p>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-overlay" class="game-overlay">
+          <h2 id="overlay-title" class="overlay-title">GAME OVER</h2>
+          <div class="medal-display">
+            <div id="overlay-medal-icon" class="medal-icon">🗑️</div>
+            <div class="medal-text">
+              <span class="medal-label">TRASH HONOR AWARDED</span>
+              <span id="overlay-medal-name" class="medal-name">TIN CAN</span>
+            </div>
+          </div>
+          <div class="overlay-stats">
+            <div class="overlay-stat-item">
+              <span>FINAL SCORE</span>
+              <span id="overlay-final-score">0000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>BEST SCORE</span>
+              <span id="overlay-best-score">0000</span>
+            </div>
+            <div class="overlay-stat-item">
+              <span>CHIPS EATEN</span>
+              <span id="overlay-chips-count">0</span>
+            </div>
+          </div>
+          <button id="overlay-restart-btn" class="overlay-restart-btn">PLAY AGAIN ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Controls Deck for Touch / Mobile Handheld -->
+    <div class="controls-deck">
+      <button id="btn-flap" class="btn-flap-action" aria-label="Flap Wings">
+        🪶 FLAP WINGS
+        <span class="btn-subtext">[SPACE / TAP / CLICK]</span>
+      </button>
+    </div>
+
+    <!-- Gameplay Guide Card -->
+    <div class="instructions-card">
+      <h4>HOW TO RULE THE CURBSIDE:</h4>
+      <ul>
+        <li>• <strong>SPACEBAR / UP / CLICK:</strong> Flap scruffy wings to gain altitude</li>
+        <li>• <strong>WHEELIE BINS:</strong> Navigate safely through council bin gaps (+1 pt)</li>
+        <li>• <strong>HOT CHIPS:</strong> Snatch golden hot chips for delicious bonus points (+5 pts)</li>
+        <li>• <strong>P / M / R:</strong> Pause game, toggle synthesizer audio, restart run</li>
+      </ul>
+    </div>
+  </main>
+
+  <script type="module" src="./js/bundle.js"></script>
+</body>
+</html>

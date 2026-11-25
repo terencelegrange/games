@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --nokia-body: #1e2638;
+  --nokia-trim: #2d3b55;
+  --nokia-screen-bg: #879738;
+  --nokia-screen-dark: #1b2a09;
+  --nokia-screen-glow: rgba(135, 151, 56, 0.25);
+  --keypad-bg: #151a26;
+  --keypad-key: #2a3449;
+  --keypad-active: #3b4966;
+  --font-retro: 'Press Start 2P', monospace, sans-serif;
+  --font-display: 'VT323', monospace, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: #080c14;
+  color: #f1f5f9;
+  font-family: var(--font-retro);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Header */
+.arcade-header {
+  width: 100%;
+  background: linear-gradient(180deg, #182030 0%, #0c121e 100%);
+  border-bottom: 3px solid #879738;
+  box-shadow: 0 4px 20px rgba(135, 151, 56, 0.25);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-back {
+  font-size: 0.75rem;
+  color: #879738;
+  text-decoration: none;
+  padding: 6px 12px;
+  background: rgba(135, 151, 56, 0.15);
+  border: 1px solid rgba(135, 151, 56, 0.4);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.brand-back:hover {
+  background: rgba(135, 151, 56, 0.35);
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  color: #a3b845;
+  text-shadow: 0 0 10px rgba(135, 151, 56, 0.6);
+  letter-spacing: 2px;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.arcade-btn {
+  background: #151c29;
+  border: 2px solid #879738;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.arcade-btn:hover {
+  background: #879738;
+  color: #1b2a09;
+  box-shadow: 0 0 16px rgba(135, 151, 56, 0.6);
+  transform: translateY(-2px);
+}
+
+.arcade-btn.active {
+  background: rgba(135, 151, 56, 0.25);
+}
+
+/* Cabinet / Phone Chassis */
+.phone-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 1rem 2.5rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.phone-sub-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.stage-title {
+  font-size: 0.75rem;
+  color: #a3b845;
+  letter-spacing: 1px;
+}
+
+/* Phone Bezel Frame */
+.phone-chassis {
+  width: 100%;
+  background: var(--nokia-body);
+  border: 4px solid var(--nokia-trim);
+  border-radius: 28px;
+  padding: 18px 16px;
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phone-earpiece {
+  width: 50px;
+  height: 6px;
+  background: #0f131a;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.nokia-brand {
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 0.75rem;
+  color: #64748b;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+/* LCD Screen Bezel */
+.lcd-bezel {
+  width: 100%;
+  background: #111822;
+  border: 4px solid #1a222f;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* LCD Top HUD bar */
+.lcd-hud-bar {
+  width: 100%;
+  background: var(--nokia-screen-bg);
+  color: var(--nokia-screen-dark);
+  font-family: var(--font-retro);
+  font-size: 0.55rem;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--nokia-screen-dark);
+}
+
+/* Game Canvas Viewport */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 420 / 280;
+  background: var(--nokia-screen-bg);
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Game Over Overlay */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(135, 151, 56, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  color: var(--nokia-screen-dark);
+  text-align: center;
+}
+
+.game-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-title {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.overlay-stats {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.overlay-restart-btn {
+  background: var(--nokia-screen-dark);
+  color: var(--nokia-screen-bg);
+  border: none;
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  padding: 10px 18px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Keypad Section */
+.phone-keypad {
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Navigation D-Pad */
+.keypad-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-row {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-btn {
+  width: 44px;
+  height: 40px;
+  background: var(--keypad-key);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  color: #cbd5e1;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #111620;
+  transition: all 0.08s ease;
+  touch-action: none;
+}
+
+.nav-btn:active, .nav-btn.active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #111620;
+  background: #879738;
+  color: #1b2a09;
+}
+
+/* Numeric 3x4 Keypad */
+.num-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.num-key {
+  background: var(--keypad-key);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: #f1f5f9;
+  padding: 10px 0;
+  font-family: var(--font-retro);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #111620;
+  transition: all 0.08s ease;
+  touch-action: none;
+}
+
+.num-key:active, .num-key.active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #111620;
+  background: #879738;
+  color: #1b2a09;
+}
+
+.num-label {
+  font-size: 0.95rem;
+}
+
+.num-sub {
+  font-size: 0.45rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.num-key.active .num-sub {
+  color: #1b2a09;
+}
+
+.controls-hint {
+  margin-top: 1.2rem;
+  font-size: 0.55rem;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .phone-stage {
+    padding: 0.4rem 0.4rem 1.2rem;
+  }
+  .phone-chassis {
+    padding: 12px 10px;
+    border-radius: 20px;
+  }
+  .lcd-bezel {
+    padding: 4px;
+    border-width: 2px;
+  }
+  .canvas-container {
+    touch-action: none;
+  }
+  .nav-btn {
+    width: 48px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  .num-key {
+    padding: 8px 0;
+  }
+  .controls-hint {
+    display: none;
+  }
+}

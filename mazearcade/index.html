@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAZE ARCADE | Standalone Arcade</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CRT Monitor Simulation Overlay -->
+  <div id="crt-overlay" class="crt-overlay"></div>
+
+  <!-- Header Navigation -->
+  <header class="cabinet-header">
+    <a href="../index.html" class="arcade-btn btn-back" id="btn-back-hub" title="Return to Games Dashboard">
+      <span>◀</span> DASHBOARD
+    </a>
+    <div class="logo-container">
+      <span class="logo-icon">🟡</span>
+      <span class="logo-title">MAZE ARCADE</span>
+    </div>
+    <div class="header-controls">
+      <button id="btn-toggle-sound" class="arcade-btn" title="Toggle Sound">
+        <span id="sound-icon">🔊</span>
+      </button>
+      <button id="btn-toggle-crt" class="arcade-btn active" title="Toggle CRT Scanlines">
+        <span>📺</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Cabinet Stage -->
+  <main class="cabinet-stage">
+    <div class="cabinet-sub-bar">
+      <span class="stage-title">MAZE ARCADE</span>
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-pause-game" class="arcade-btn">PAUSE</button>
+        <button id="btn-restart-game" class="arcade-btn">RESTART</button>
+      </div>
+    </div>
+
+    <!-- Scoreboard HUD -->
+    <div class="scoreboard">
+      <div class="score-box">
+        <span class="score-label">1UP</span>
+        <span id="hud-score" class="score-val">0000</span>
+      </div>
+      <div class="score-box" style="text-align: right;">
+        <span class="score-label">HIGH SCORE</span>
+        <span id="hud-high-score" class="score-val">0000</span>
+      </div>
+    </div>
+
+    <!-- Cabinet Bezel & Game Canvas -->
+    <div class="cabinet-frame">
+      <div id="game-canvas-container" class="canvas-container">
+        <!-- Canvas injected by main.js -->
+      </div>
+    </div>
+
+    <!-- Footer HUD (Lives & Level) -->
+    <div class="cabinet-footer-hud">
+      <div class="lives-container">
+        <span class="lives-label">LIVES:</span>
+        <div id="hud-lives-icons" style="display: flex; gap: 4px;">
+          <div class="life-icon"></div>
+          <div class="life-icon"></div>
+          <div class="life-icon"></div>
+        </div>
+      </div>
+      <div class="level-indicator">
+        LEVEL <span id="hud-level-num">1</span>
+      </div>
+    </div>
+
+    <!-- Speed Controls / Settings Bar -->
+    <div class="cabinet-speed-bar" aria-label="Game Speed Configuration">
+      <span class="speed-label">SPEED:</span>
+      <div class="speed-btn-group" id="speed-controls" role="group" aria-label="Game Speed">
+        <button class="speed-btn" data-speed="0.5" id="btn-speed-05" title="0.5x Slow Speed">0.5x</button>
+        <button class="speed-btn active" data-speed="1" id="btn-speed-1" title="1x Normal Speed">1x</button>
+        <button class="speed-btn" data-speed="2" id="btn-speed-2" title="2x Fast Speed">2x</button>
+      </div>
+    </div>
+
+    <!-- Virtual Controls Deck for Touch/Mouse -->
+    <div class="controls-deck">
+      <div class="virtual-controls">
+        <button id="dpad-up" class="dpad-btn" aria-label="Up">▲</button>
+        <div class="dpad-row">
+          <button id="dpad-left" class="dpad-btn" aria-label="Left">◀</button>
+          <button id="dpad-down" class="dpad-btn" aria-label="Down">▼</button>
+          <button id="dpad-right" class="dpad-btn" aria-label="Right">▶</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      ARROWS / WASD = MOVE • SPACE = PAUSE • ESC = DASHBOARD
+    </div>
+  </main>
+
+  <script src="js/bundle.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "onehitpool",
+  "version": "1.0.0",
+  "description": "One Hit Pool - 1-Shot Concentric Ring Billiard Arcade Challenge",
+  "main": "js/bundle.js",
+  "type": "module",
+  "keywords": [
+    "onehitpool",
+    "pool",
+    "billiards",
+    "arcade",
+    "physics"
+  ],
+  "author": "Terence Le Grange",
+  "license": "MIT"
+}

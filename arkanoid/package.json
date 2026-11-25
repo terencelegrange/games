@@ -1,0 +1,15 @@
+{
+  "name": "arkanoid",
+  "version": "1.0.0",
+  "description": "Arkanoid - 1986 Block Breaker Arcade Tribute",
+  "main": "js/bundle.js",
+  "type": "module",
+  "keywords": [
+    "arkanoid",
+    "breakout",
+    "arcade",
+    "brickbreaker"
+  ],
+  "author": "",
+  "license": "MIT"
+}
